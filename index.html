@@ -34,7 +34,7 @@
         }
 
         .logo {
-            max-width: 300px;
+            max-width: 600px;
             width: 80vw;
             height: auto;
         }
@@ -163,9 +163,46 @@
             margin-top: 1rem;
         }
 
+        .product-card-container {
+            position: relative;
+        }
+
+        .product-card-links {
+            display: none;
+            gap: 0.5rem;
+            margin-top: 1rem;
+            flex-direction: column;
+        }
+
+        .product-card-container:hover .product-card-links,
+        .product-card-container:focus-within .product-card-links {
+            display: flex;
+        }
+
+        .product-link {
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            padding: 0.5rem 1rem;
+            background: transparent;
+            border: 1px solid #ffffff;
+            color: #ffffff;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-radius: 4px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .product-link:hover {
+            background: #ffffff;
+            color: #000000;
+        }
+
         @media (max-width: 768px) {
             .logo {
-                max-width: 220px;
+                max-width: 440px;
             }
 
             .products-btn {
@@ -201,8 +238,18 @@
         <div class="products-grid">
             <a href="https://github.com/consort-tech/organize-tg" target="_blank" rel="noopener noreferrer" class="product-card">
                 <h3>Organize TG</h3>
-                <p>Telegram contact automation for web3 founders</p>
+                <p>Sorting and automation of your Telegram contacts. Great for founders and other busy people.</p>
             </a>
+            <div class="product-card-container">
+                <div class="product-card">
+                    <h3>Billboard</h3>
+                    <p>Advertising and distribution platform for Farcaster and Base App.</p>
+                    <div class="product-card-links">
+                        <a href="https://farcaster.xyz/miniapps/xDQ8d3qSOJpE/billboard-by-consort" target="_blank" rel="noopener noreferrer" class="product-link">Open on Farcaster</a>
+                        <a href="https://base.app/app/billboard.propaganda.build" target="_blank" rel="noopener noreferrer" class="product-link">Open on Base App</a>
+                    </div>
+                </div>
+            </div>
             <div class="product-card disabled">
                 <h3>More Soon</h3>
                 <p>New products in development</p>
