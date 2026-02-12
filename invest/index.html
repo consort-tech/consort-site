@@ -687,6 +687,7 @@
         .raise-terms {
             display: flex;
             justify-content: center;
+            align-items: flex-start;
             gap: 64px;
             margin-bottom: 48px;
         }
@@ -702,6 +703,13 @@
             font-size: 56px;
             line-height: 1;
             color: var(--text);
+            white-space: nowrap;
+        }
+
+        .raise-term.highlighted {
+            outline: 2px solid var(--accent);
+            outline-offset: 16px;
+            border-radius: 12px;
         }
 
         .raise-term-label {
@@ -709,6 +717,13 @@
             color: var(--text-tertiary);
             margin-top: 8px;
             letter-spacing: 0.05em;
+        }
+
+        .raise-divider {
+            width: 1px;
+            height: 60px;
+            background: var(--border);
+            align-self: center;
         }
 
         .funds-section {
@@ -951,6 +966,11 @@
                 flex-direction: column;
                 gap: 32px;
                 align-items: center;
+            }
+
+            .raise-divider {
+                width: 60px;
+                height: 1px;
             }
 
             .raise-term-num { font-size: 44px; }
@@ -1212,6 +1232,11 @@
                 <div class="raise-term">
                     <span class="raise-term-num" data-count-to="24" data-suffix=" months">0</span>
                     <span class="raise-term-label">runway</span>
+                </div>
+                <div class="raise-divider"></div>
+                <div class="raise-term highlighted">
+                    <span class="raise-term-num" data-count-to="10" data-prefix="$" data-suffix="M+">0</span>
+                    <span class="raise-term-label">24-month revenue target</span>
                 </div>
             </div>
 
