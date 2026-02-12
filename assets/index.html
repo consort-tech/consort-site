@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consort Technologies</title>
+    <link rel="icon" type="image/png" href="assets/logo-icon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --white: #f5f5f5;
+            --black: #000000;
+            --gray: rgba(255, 255, 255, 0.6);
+        }
+
+        body {
+            font-family: 'Rajdhani', sans-serif;
+            background-color: var(--black);
+            color: var(--white);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .logo-container {
+            animation: fadeIn 1.2s ease-out;
+        }
+
+        .logo {
+            max-width: 500px;
+            width: 90vw;
+            height: auto;
+        }
+
+        .products-btn {
+            margin-top: 60px;
+            padding: 16px 48px;
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 18px;
+            font-weight: 600;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--white);
+            background: transparent;
+            border: 2px solid var(--white);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            animation: fadeIn 1.2s ease-out 0.3s both;
+        }
+
+        .products-btn:hover {
+            background: var(--white);
+            color: var(--black);
+        }
+
+        /* Products Overlay */
+        .products-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--black);
+            z-index: 100;
+            display: flex;
+            flex-direction: column;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.4s ease, visibility 0.4s ease;
+        }
+
+        .products-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .products-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 30px 50px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .products-title {
+            font-size: 24px;
+            font-weight: 600;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+        }
+
+        .close-btn {
+            width: 40px;
+            height: 40px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .close-btn::before,
+        .close-btn::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 24px;
+            height: 2px;
+            background: var(--white);
+            transition: background 0.3s ease;
+        }
+
+        .close-btn::before {
+            transform: translate(-50%, -50%) rotate(45deg);
+        }
+
+        .close-btn::after {
+            transform: translate(-50%, -50%) rotate(-45deg);
+        }
+
+        .close-btn:hover::before,
+        .close-btn:hover::after {
+            background: var(--gray);
+        }
+
+        .products-grid {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 50px;
+        }
+
+        .products-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 320px));
+            gap: 30px;
+            max-width: 1200px;
+            justify-content: center;
+        }
+
+        .product-card {
+            aspect-ratio: 1;
+            border: 2px solid var(--white);
+            border-radius: 16px;
+            background: transparent;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 30px;
+            text-decoration: none;
+            color: var(--white);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .product-card:hover {
+            background: rgba(255, 255, 255, 0.05);
+            transform: translateY(-4px);
+        }
+
+        .product-icon {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 20px;
+            opacity: 0.9;
+        }
+
+        .product-name {
+            font-size: 20px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .product-desc {
+            font-size: 14px;
+            font-weight: 400;
+            color: var(--gray);
+            text-align: center;
+            line-height: 1.5;
+        }
+
+        .coming-soon {
+            opacity: 0.5;
+            cursor: default;
+        }
+
+        .coming-soon:hover {
+            background: transparent;
+            transform: none;
+        }
+
+        .coming-soon-badge {
+            font-size: 11px;
+            letter-spacing: 2px;
+            color: var(--gray);
+            margin-top: 15px;
+            padding: 6px 12px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 4px;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .products-header {
+                padding: 20px 25px;
+            }
+
+            .products-grid {
+                padding: 25px;
+            }
+
+            .products-container {
+                grid-template-columns: 1fr;
+                max-width: 320px;
+            }
+
+            .logo {
+                max-width: 320px;
+            }
+
+            .products-btn {
+                padding: 14px 36px;
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="logo-container">
+            <img src="assets/logo-full.png" alt="Consort Technologies" class="logo">
+        </div>
+        <button class="products-btn" onclick="openProducts()">Products</button>
+    </section>
+
+    <!-- Products Overlay -->
+    <div class="products-overlay" id="productsOverlay">
+        <header class="products-header">
+            <h2 class="products-title">Products</h2>
+            <button class="close-btn" onclick="closeProducts()" aria-label="Close"></button>
+        </header>
+        <div class="products-grid">
+            <div class="products-container">
+                <!-- Product Card: Organize TG -->
+                <a href="https://clawdhub.com" target="_blank" class="product-card">
+                    <svg class="product-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <path d="M21 5L12 14l-4-4-5 5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M21 5h-6m6 0v6" stroke-linecap="round" stroke-linejoin="round"/>
+                        <rect x="3" y="3" width="18" height="18" rx="2" stroke-linecap="round"/>
+                    </svg>
+                    <h3 class="product-name">Organize TG</h3>
+                    <p class="product-desc">Telegram contact automation for web3 founders</p>
+                </a>
+
+                <!-- Placeholder for future products -->
+                <div class="product-card coming-soon">
+                    <svg class="product-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <circle cx="12" cy="12" r="9"/>
+                        <path d="M12 7v5l3 3" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <h3 class="product-name">More Soon</h3>
+                    <p class="product-desc">New tools in development</p>
+                    <span class="coming-soon-badge">COMING SOON</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function openProducts() {
+            document.getElementById('productsOverlay').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeProducts() {
+            document.getElementById('productsOverlay').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // Close on Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeProducts();
+        });
+
+        // Close when clicking outside the cards
+        document.getElementById('productsOverlay').addEventListener('click', (e) => {
+            if (e.target.classList.contains('products-overlay') || 
+                e.target.classList.contains('products-grid')) {
+                closeProducts();
+            }
+        });
+    </script>
+</body>
+</html>

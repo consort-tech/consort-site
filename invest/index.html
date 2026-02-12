@@ -1,0 +1,1334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invest in Consort Technologies</title>
+    <meta name="description" content="Edge for the bleeding edge. A capital-efficient product studio building tools for emerging crypto-native markets.">
+    <meta property="og:title" content="Invest in Consort Technologies">
+    <meta property="og:description" content="Edge for the bleeding edge. A capital-efficient product studio building tools for emerging crypto-native markets.">
+    <meta property="og:image" content="https://consort.tech/assets/logo-full.png">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://consort.tech/invest">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Invest in Consort Technologies">
+    <meta name="twitter:description" content="Edge for the bleeding edge. A capital-efficient product studio building tools for emerging crypto-native markets.">
+    <meta name="twitter:image" content="https://consort.tech/assets/logo-full.png">
+    <link rel="icon" type="image/png" href="../assets/logo-icon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* ===== RESET & CUSTOM PROPERTIES ===== */
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg: #000000;
+            --text: #FFFFFF;
+            --text-secondary: rgba(255, 255, 255, 0.6);
+            --text-tertiary: rgba(255, 255, 255, 0.4);
+            --accent: #0066FF;
+            --accent-dim: rgba(0, 102, 255, 0.15);
+            --border: rgba(255, 255, 255, 0.12);
+            --border-light: rgba(255, 255, 255, 0.06);
+            --card-bg: rgba(255, 255, 255, 0.03);
+            --font-display: 'Archivo Black', sans-serif;
+            --font-body: 'DM Sans', sans-serif;
+        }
+
+        /* ===== SCROLL SNAP CONTAINER ===== */
+        html {
+            scroll-snap-type: y mandatory;
+            overflow-y: scroll;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background: var(--bg);
+            color: var(--text);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* ===== SECTIONS ===== */
+        .section {
+            scroll-snap-align: start;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .section-inner {
+            width: 100%;
+            max-width: 1100px;
+            padding: 60px 48px;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .section.visible .section-inner {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Hero is visible immediately */
+        #hero .section-inner {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .section-label {
+            display: block;
+            font-family: var(--font-body);
+            font-size: 13px;
+            font-weight: 500;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--text-tertiary);
+            margin-bottom: 48px;
+        }
+
+        /* ===== PROGRESS BAR ===== */
+        #progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            background: var(--accent);
+            width: 0%;
+            z-index: 1000;
+            transition: width 0.4s ease-out;
+        }
+
+        /* ===== SECTION COUNTER ===== */
+        #section-counter {
+            position: fixed;
+            bottom: 32px;
+            right: 32px;
+            font-family: var(--font-body);
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--text-tertiary);
+            z-index: 1000;
+            letter-spacing: 0.05em;
+        }
+
+        /* ===== DOT NAVIGATION ===== */
+        #dot-nav {
+            position: fixed;
+            right: 32px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            z-index: 1000;
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            border: 1.5px solid var(--text-tertiary);
+            background: transparent;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            padding: 0;
+        }
+
+        .dot:hover {
+            border-color: var(--text);
+        }
+
+        .dot.active {
+            background: var(--accent);
+            border-color: var(--accent);
+        }
+
+        /* ===== SECTION 1: HERO ===== */
+        #hero {
+            text-align: center;
+        }
+
+        #hero .section-inner {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-logo {
+            max-width: 480px;
+            width: 80vw;
+            height: auto;
+            margin-bottom: 32px;
+        }
+
+        .hero-tagline {
+            font-family: var(--font-body);
+            font-size: 22px;
+            font-weight: 400;
+            color: var(--text-secondary);
+            letter-spacing: 0.02em;
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 48px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+            color: var(--text-tertiary);
+            font-size: 13px;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            animation: fadeIn 1s ease-out 0.5s both;
+        }
+
+        .scroll-indicator svg {
+            animation: bounce 2s ease-in-out infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(6px); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* ===== SECTION 2: THE OPPORTUNITY ===== */
+        #opportunity .section-inner {
+            text-align: center;
+        }
+
+        .hero-stat {
+            margin-bottom: 48px;
+        }
+
+        .stat-number {
+            font-family: var(--font-display);
+            font-size: 120px;
+            line-height: 1;
+            display: block;
+            color: var(--text);
+        }
+
+        .stat-number.accent {
+            color: var(--accent);
+        }
+
+        .stat-label {
+            font-size: 18px;
+            font-weight: 400;
+            color: var(--text-secondary);
+            margin-top: 8px;
+            display: block;
+        }
+
+        .stat-row {
+            display: flex;
+            justify-content: center;
+            gap: 80px;
+            margin-bottom: 48px;
+        }
+
+        .stat-row .stat-number {
+            font-size: 72px;
+        }
+
+        .section-text {
+            font-size: 18px;
+            font-weight: 400;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            max-width: 640px;
+            margin: 0 auto;
+        }
+
+        /* ===== SECTION 3: WHY NOW ===== */
+        .pull-quote {
+            font-family: var(--font-display);
+            font-size: 36px;
+            line-height: 1.3;
+            color: var(--text);
+            margin-bottom: 56px;
+            max-width: 720px;
+        }
+
+        .points-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+            max-width: 640px;
+        }
+
+        .point {
+            padding-left: 20px;
+            border-left: 2px solid var(--accent);
+        }
+
+        .point-title {
+            font-family: var(--font-body);
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 6px;
+        }
+
+        .point-desc {
+            font-size: 16px;
+            font-weight: 400;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* ===== SECTION 4: THE MODEL ===== */
+        #model .section-inner {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .org-chart {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            max-width: 800px;
+            margin-bottom: 40px;
+        }
+
+        .org-parent {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 28px 40px;
+            border: 2px solid var(--accent);
+            border-radius: 12px;
+            background: var(--accent-dim);
+            text-align: center;
+        }
+
+        .org-parent-logo {
+            width: 40px;
+            height: 40px;
+            margin-bottom: 8px;
+        }
+
+        .org-parent-name {
+            font-family: var(--font-display);
+            font-size: 18px;
+            letter-spacing: 0.05em;
+        }
+
+        .org-parent-sub {
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin-top: 4px;
+        }
+
+        .org-branches-svg {
+            width: 100%;
+            max-width: 700px;
+            height: 60px;
+            display: block;
+        }
+
+        .org-branches-svg line {
+            stroke: rgba(255, 255, 255, 0.2);
+            stroke-width: 1.5;
+        }
+
+        .org-children {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            width: 100%;
+            max-width: 700px;
+        }
+
+        .org-child {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .org-leaf {
+            padding: 14px 20px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            background: var(--card-bg);
+            font-size: 14px;
+            font-weight: 500;
+            text-align: center;
+        }
+
+        .org-future-wrap {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 4px;
+            width: 100%;
+            max-width: 700px;
+        }
+
+        .org-future-stem {
+            width: 2px;
+            height: 28px;
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .org-leaf.future {
+            border-style: dashed;
+            color: var(--text-tertiary);
+        }
+
+        .model-notes {
+            text-align: center;
+            max-width: 560px;
+        }
+
+        .model-notes p {
+            font-size: 16px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 8px;
+        }
+
+        .model-notes strong {
+            color: var(--text);
+        }
+
+        /* ===== SECTION 5: THE PRODUCTS ===== */
+        #products .section-inner {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .products-row {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-bottom: 32px;
+        }
+
+        .product-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 28px 24px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-badge {
+            display: inline-block;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            padding: 4px 10px;
+            border-radius: 4px;
+            margin-bottom: 16px;
+            width: fit-content;
+        }
+
+        .product-badge.live {
+            background: var(--accent);
+            color: var(--text);
+        }
+
+        .product-badge.dev {
+            background: transparent;
+            color: var(--text-tertiary);
+            border: 1px solid var(--text-tertiary);
+        }
+
+        .product-name {
+            font-family: var(--font-display);
+            font-size: 22px;
+            margin-bottom: 8px;
+        }
+
+        .product-oneliner {
+            font-size: 15px;
+            color: var(--text-secondary);
+            line-height: 1.5;
+            margin-bottom: 16px;
+        }
+
+        .product-stat {
+            font-family: var(--font-display);
+            font-size: 28px;
+            color: var(--accent);
+            margin-bottom: 4px;
+        }
+
+        .product-stat-label {
+            font-size: 13px;
+            color: var(--text-tertiary);
+            margin-bottom: 16px;
+        }
+
+        .product-detail {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-top: auto;
+        }
+
+        .products-note {
+            font-size: 15px;
+            color: var(--text-tertiary);
+            line-height: 1.6;
+            text-align: center;
+            max-width: 640px;
+            margin: 0 auto;
+            font-style: italic;
+        }
+
+        /* ===== SECTION 6: REVENUE POTENTIAL ===== */
+        #numbers .section-inner {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .rev-table-wrap {
+            width: 100%;
+            overflow-x: auto;
+            margin-bottom: 32px;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .rev-table {
+            width: 100%;
+            min-width: 600px;
+            border-collapse: collapse;
+            font-size: 15px;
+        }
+
+        .rev-table thead th {
+            font-family: var(--font-body);
+            font-size: 13px;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--text-tertiary);
+            text-align: left;
+            padding: 0 16px 16px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .rev-table tbody td {
+            padding: 18px 16px;
+            border-bottom: 1px solid var(--border-light);
+            vertical-align: top;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        .rev-table tbody td:first-child {
+            font-weight: 700;
+            color: var(--text);
+            white-space: nowrap;
+        }
+
+        .rev-table .row-combined td {
+            border-bottom: none;
+            border-top: 1px solid var(--accent);
+            padding-top: 20px;
+            font-weight: 700;
+            color: var(--text);
+            font-size: 17px;
+        }
+
+        .rev-table .row-combined td:first-child {
+            color: var(--accent);
+        }
+
+        .table-note {
+            font-size: 15px;
+            color: var(--text-tertiary);
+            line-height: 1.7;
+            max-width: 640px;
+            text-align: center;
+        }
+
+        /* ===== SECTION 7: THE FOUNDER ===== */
+        .founder-layout {
+            display: flex;
+            gap: 56px;
+            align-items: flex-start;
+        }
+
+        .founder-photo-col {
+            flex-shrink: 0;
+        }
+
+        .founder-photo {
+            width: 220px;
+            height: 220px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--border);
+        }
+
+        .founder-info {
+            flex: 1;
+        }
+
+        .founder-name {
+            font-family: var(--font-display);
+            font-size: 36px;
+            margin-bottom: 4px;
+        }
+
+        .founder-title {
+            font-size: 16px;
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+        }
+
+        .founder-bio {
+            font-size: 16px;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-bottom: 16px;
+        }
+
+        .bio-highlight {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .founder-links {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .founder-link {
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--text-secondary);
+            text-decoration: none;
+            padding: 6px 14px;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            transition: all 0.25s ease;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .founder-link:hover {
+            color: var(--text);
+            border-color: var(--text-secondary);
+        }
+
+        .founder-link svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        .founder-book-call {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+            margin-top: 16px;
+            padding: 16px 24px;
+            font-family: var(--font-body);
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--text);
+            background: var(--accent);
+            border: 2px solid var(--accent);
+            border-radius: 8px;
+            text-decoration: none;
+            transition: all 0.25s ease;
+        }
+
+        .founder-book-call:hover {
+            background: #0052cc;
+            border-color: #0052cc;
+        }
+
+        .founder-book-call svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        /* ===== SECTION 8: THE RAISE ===== */
+        #raise .section-inner {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .raise-terms {
+            display: flex;
+            justify-content: center;
+            gap: 64px;
+            margin-bottom: 48px;
+        }
+
+        .raise-term {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .raise-term-num {
+            font-family: var(--font-display);
+            font-size: 56px;
+            line-height: 1;
+            color: var(--text);
+        }
+
+        .raise-term-label {
+            font-size: 14px;
+            color: var(--text-tertiary);
+            margin-top: 8px;
+            letter-spacing: 0.05em;
+        }
+
+        .funds-section {
+            width: 100%;
+            max-width: 640px;
+            margin-bottom: 48px;
+        }
+
+        .funds-heading {
+            font-size: 13px;
+            font-weight: 500;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--text-tertiary);
+            margin-bottom: 16px;
+        }
+
+        .funds-bar {
+            display: flex;
+            width: 100%;
+            height: 40px;
+            border-radius: 6px;
+            overflow: hidden;
+            margin-bottom: 12px;
+        }
+
+        .funds-segment {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            color: var(--text);
+            transition: opacity 0.2s ease;
+        }
+
+        .funds-segment:nth-child(1) { background: var(--accent); }
+        .funds-segment:nth-child(2) { background: #0052cc; }
+        .funds-segment:nth-child(3) { background: #003d99; }
+        .funds-segment:nth-child(4) { background: #002966; }
+
+        .funds-legend {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            flex-wrap: wrap;
+        }
+
+        .funds-legend-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+
+        .funds-legend-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 2px;
+        }
+
+        .cta-section {
+            margin-top: 8px;
+        }
+
+        .cta-headline {
+            font-family: var(--font-display);
+            font-size: 36px;
+            margin-bottom: 24px;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 24px;
+        }
+
+        .cta-btn {
+            font-family: var(--font-body);
+            font-size: 16px;
+            font-weight: 600;
+            text-decoration: none;
+            color: var(--text);
+            padding: 14px 28px;
+            border-radius: 8px;
+            transition: all 0.25s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .cta-btn.primary {
+            background: var(--accent);
+            border: 2px solid var(--accent);
+        }
+
+        .cta-btn.primary:hover {
+            background: #0052cc;
+            border-color: #0052cc;
+        }
+
+        .cta-btn.secondary {
+            background: transparent;
+            border: 2px solid var(--border);
+        }
+
+        .cta-btn.secondary:hover {
+            border-color: var(--text-secondary);
+        }
+
+        .cta-footer {
+            font-size: 14px;
+            color: var(--text-tertiary);
+        }
+
+        /* ===== ANIMATIONS ===== */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 1024px) {
+            .stat-number { font-size: 96px; }
+            .stat-row .stat-number { font-size: 56px; }
+            .pull-quote { font-size: 30px; }
+            .raise-terms { gap: 48px; }
+            .raise-term-num { font-size: 48px; }
+            .founder-layout { gap: 40px; }
+        }
+
+        @media (max-width: 768px) {
+            html {
+                scroll-snap-type: y proximity;
+            }
+
+            .section-inner {
+                padding: 48px 24px;
+            }
+
+            .section-label {
+                font-size: 11px;
+                margin-bottom: 32px;
+            }
+
+            /* Allow overflow on content-heavy sections */
+            #products,
+            #numbers,
+            #founder {
+                height: auto;
+                min-height: 100vh;
+            }
+
+            #dot-nav {
+                display: none;
+            }
+
+            #section-counter {
+                bottom: 20px;
+                right: 20px;
+                font-size: 12px;
+            }
+
+            /* Hero */
+            .hero-logo { max-width: 300px; }
+            .hero-tagline { font-size: 18px; }
+            .scroll-indicator { bottom: 32px; font-size: 11px; }
+
+            /* Opportunity */
+            .stat-number { font-size: 64px; }
+            .stat-row { gap: 40px; }
+            .stat-row .stat-number { font-size: 48px; }
+            .stat-label { font-size: 15px; }
+            .section-text { font-size: 16px; }
+
+            /* Why Now */
+            .pull-quote { font-size: 24px; margin-bottom: 40px; }
+            .point-title { font-size: 16px; }
+            .point-desc { font-size: 14px; }
+
+            /* Model */
+            .org-chart {
+                max-width: 100%;
+            }
+
+            .org-branches-svg {
+                height: 40px;
+            }
+
+            .org-children {
+                gap: 10px;
+            }
+
+            .org-leaf {
+                padding: 10px 8px;
+                font-size: 12px;
+            }
+
+            .model-notes p { font-size: 14px; }
+
+            /* Products */
+            .products-row {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+
+            .product-name { font-size: 20px; }
+            .product-oneliner { font-size: 14px; }
+            .product-stat { font-size: 24px; }
+            .product-detail { font-size: 13px; }
+            .products-note { font-size: 13px; }
+
+            /* Numbers */
+            .rev-table { font-size: 13px; }
+
+            /* Founder */
+            .founder-layout {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            .founder-photo { width: 160px; height: 160px; }
+            .founder-name { font-size: 28px; }
+            .founder-bio { font-size: 14px; }
+            .founder-links { justify-content: center; }
+
+            /* Raise */
+            .raise-terms {
+                flex-direction: column;
+                gap: 32px;
+                align-items: center;
+            }
+
+            .raise-term-num { font-size: 44px; }
+            .cta-headline { font-size: 28px; }
+            .cta-btn { font-size: 14px; padding: 12px 20px; }
+            .funds-section { margin-bottom: 32px; }
+        }
+
+        @media (max-width: 480px) {
+            .stat-number { font-size: 52px; }
+            .stat-row .stat-number { font-size: 40px; }
+            .stat-row { flex-direction: column; gap: 24px; }
+            .pull-quote { font-size: 21px; }
+            .raise-term-num { font-size: 36px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Progress Bar -->
+    <div id="progress-bar"></div>
+
+    <!-- Section Counter -->
+    <div id="section-counter">1 / 8</div>
+
+    <!-- Dot Navigation -->
+    <nav id="dot-nav">
+        <button class="dot active" data-index="0" aria-label="Section 1"></button>
+        <button class="dot" data-index="1" aria-label="Section 2"></button>
+        <button class="dot" data-index="2" aria-label="Section 3"></button>
+        <button class="dot" data-index="3" aria-label="Section 4"></button>
+        <button class="dot" data-index="4" aria-label="Section 5"></button>
+        <button class="dot" data-index="5" aria-label="Section 6"></button>
+        <button class="dot" data-index="6" aria-label="Section 7"></button>
+        <button class="dot" data-index="7" aria-label="Section 8"></button>
+    </nav>
+
+    <!-- ===== SECTION 1: HERO ===== -->
+    <section id="hero" class="section visible">
+        <div class="section-inner">
+            <img src="../assets/logo-full.png" alt="Consort Technologies" class="hero-logo">
+            <p class="hero-tagline">Edge for the bleeding edge.</p>
+        </div>
+        <div class="scroll-indicator">
+            <span>Scroll to explore</span>
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <path d="M4 7l6 6 6-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </div>
+    </section>
+
+    <!-- ===== SECTION 2: THE OPPORTUNITY ===== -->
+    <section id="opportunity" class="section">
+        <div class="section-inner">
+            <span class="section-label">The Opportunity</span>
+            <div class="hero-stat">
+                <span class="stat-number" data-count-to="500" data-suffix="M+">0</span>
+                <span class="stat-label">global crypto users</span>
+            </div>
+            <div class="stat-row">
+                <div>
+                    <span class="stat-number" data-count-to="15" data-suffix="M+">0</span>
+                    <span class="stat-label">prediction market users</span>
+                </div>
+                <div>
+                    <span class="stat-number" data-count-to="7.8" data-suffix="M+" data-decimals="1">0</span>
+                    <span class="stat-label">monthly SocialFi users</span>
+                </div>
+            </div>
+            <p class="section-text">New financial behaviors are emerging faster than incumbents can ship products. Structural constraints around compliance, brand risk, and prioritization create persistent gaps. Consort builds the tools that fill them.</p>
+        </div>
+    </section>
+
+    <!-- ===== SECTION 3: WHY NOW ===== -->
+    <section id="why-now" class="section">
+        <div class="section-inner">
+            <span class="section-label">Consort Will Be Successful Because:</span>
+            <p class="pull-quote">AI has pushed build costs toward zero. Distribution, taste, and timing now determine outcomes.</p>
+            <div class="points-grid">
+                <div class="point">
+                    <div class="point-title">Near-zero build cost</div>
+                    <div class="point-desc">Claude Code, Cursor, and modern AI tools let small teams ship production software in days or weeks.</div>
+                </div>
+                <div class="point">
+                    <div class="point-title">Distribution is the moat</div>
+                    <div class="point-desc">Founder-led, narrative-driven distribution paired with agentic content pipelines across X, TikTok, Reddit, YouTube, and fan communities.</div>
+                </div>
+                <div class="point">
+                    <div class="point-title">Taste is key</div>
+                    <div class="point-desc">In a world of infinite software, artists will thrive. It pays to invest in those with a higher level of taste.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== SECTION 4: THE MODEL ===== -->
+    <section id="model" class="section">
+        <div class="section-inner">
+            <span class="section-label">The Model</span>
+            <div class="org-chart">
+                <div class="org-parent">
+                    <img src="../assets/logo-icon.png" alt="Consort" class="org-parent-logo">
+                    <div class="org-parent-name">CONSORT TECHNOLOGIES</div>
+                    <div class="org-parent-sub">Parent &mdash; Equity Investment</div>
+                </div>
+                <!-- SVG branching lines: parent center fans out to 3 children -->
+                <svg class="org-branches-svg" viewBox="0 0 700 60" preserveAspectRatio="none">
+                    <line x1="350" y1="0" x2="116" y2="60" vector-effect="non-scaling-stroke"/>
+                    <line x1="350" y1="0" x2="350" y2="60" vector-effect="non-scaling-stroke"/>
+                    <line x1="350" y1="0" x2="584" y2="60" vector-effect="non-scaling-stroke"/>
+                </svg>
+                <div class="org-children">
+                    <div class="org-child">
+                        <div class="org-leaf">Cursed Technique Generator</div>
+                    </div>
+                    <div class="org-child">
+                        <div class="org-leaf">Lolo</div>
+                    </div>
+                    <div class="org-child">
+                        <div class="org-leaf">Billboard</div>
+                    </div>
+                </div>
+                <div class="org-future-wrap">
+                    <div class="org-future-stem"></div>
+                    <div class="org-leaf future">Future Products&hellip;</div>
+                </div>
+            </div>
+            <div class="model-notes">
+                <p><strong>Invest in Consort</strong> &rarr; equity exposure to the full portfolio.</p>
+                <p>Individual products may launch tokens, driving additional value back to Consort equity.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== SECTION 5: THE PRODUCTS ===== -->
+    <section id="products" class="section">
+        <div class="section-inner">
+            <span class="section-label">Currently Building</span>
+            <div class="products-row">
+                <!-- Billboard -->
+                <div class="product-card">
+                    <span class="product-badge live">Live</span>
+                    <h3 class="product-name">Billboard</h3>
+                    <p class="product-oneliner">In-house advertising platform. Brands bid each day to take over the ad space.</p>
+                    <p class="product-detail">Integrated across all Consort products. Free-tier users see ads, becoming recurrent revenue. As Consort products grow, Billboard scales automatically.</p>
+                </div>
+                <!-- Lolo -->
+                <div class="product-card">
+                    <span class="product-badge dev">In Development</span>
+                    <h3 class="product-name">Lolo</h3>
+                    <p class="product-oneliner">Meetup and events platform for crypto communities.</p>
+                    <p class="product-detail">Connect IRL based on holdings and onchain activity. Wallet-verified identity. Private with zk. Dynamic maps. Encrypted messaging.</p>
+                    <div class="product-stat">250K&ndash;500K</div>
+                    <div class="product-stat-label">annual crypto conference attendees</div>
+                </div>
+                <!-- Cursed Technique Generator -->
+                <div class="product-card">
+                    <span class="product-badge dev">In Development</span>
+                    <h3 class="product-name">Cursed Technique Generator</h3>
+                    <p class="product-oneliner">Premium interactive experience for the Jujutsu Kaisen community. Estimated 500M global fans.</p>
+                    <p class="product-detail">&lsquo;Pottermore&rsquo; for JJK. Pottermore, a comparable site for Harry Potter, drew 1M users in its first week and generated &pound;40M+ peak annual revenue.</p>
+                </div>
+            </div>
+            <p class="products-note">These are the first three products. Consort's model is to continuously launch, test, and scale new products as market opportunities emerge. Each product can serve to benefit the others as well, sharing users and data.</p>
+        </div>
+    </section>
+
+    <!-- ===== SECTION 6: REVENUE POTENTIAL ===== -->
+    <section id="numbers" class="section">
+        <div class="section-inner">
+            <span class="section-label">Revenue Potential</span>
+            <div class="rev-table-wrap">
+                <table class="rev-table">
+                    <thead>
+                        <tr>
+                            <th>Product</th>
+                            <th>Conservative (Year 1)</th>
+                            <th>Optimistic (Year 1)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Lolo</td>
+                            <td>$1.5M ARR (25K users &times; $5/mo)</td>
+                            <td>$6M ARR (100K users &times; $5/mo)</td>
+                        </tr>
+                        <tr>
+                            <td>Cursed Technique Generator</td>
+                            <td>$1.1M (150K purchases &times; $7.50 avg)</td>
+                            <td>$5M+ (1M purchases &times; $5&ndash;10)</td>
+                        </tr>
+                        <tr>
+                            <td>Billboard</td>
+                            <td>Ecosystem revenue multiplier</td>
+                            <td>Scales with product adoption</td>
+                        </tr>
+                        <tr class="row-combined">
+                            <td>Combined</td>
+                            <td>$2.6M+</td>
+                            <td>$11M+</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="table-note">Conservative estimates assume minimal conversion of massive addressable audiences. Upside scales with marketing budget, virality, and ecosystem network effects. These projections exclude future products.</p>
+        </div>
+    </section>
+
+    <!-- ===== SECTION 7: THE FOUNDER ===== -->
+    <section id="founder" class="section">
+        <div class="section-inner">
+            <span class="section-label">The Founder</span>
+            <div class="founder-layout">
+                <div class="founder-photo-col">
+                    <img src="../assets/ibu bali headshot black shirt smiling.png" alt="Ibu Karel" class="founder-photo">
+                </div>
+                <div class="founder-info">
+                    <h2 class="founder-name">Ibu Karel</h2>
+                    <p class="founder-title">Founder, Consort Technologies</p>
+                    <p class="founder-bio">Former CMO of Folks Finance, where he joined at <span class="bio-highlight">~$1M TVL</span> and helped scale the protocol to <span class="bio-highlight">$450M TVL</span>, becoming the largest application on Algorand.</p>
+                    <p class="founder-bio">Led multichain expansion across <span class="bio-highlight">10+ chains</span>, executed a full TGE strategy, and facilitated <span class="bio-highlight">10x social growth</span>, directing a team of 6.</p>
+                    <p class="founder-bio">Co-founded Docker on Zora/Base, generating <span class="bio-highlight">$250k+</span> in revenue and securing <span class="bio-highlight">$100k</span> in grants.</p>
+                    <div class="founder-links">
+                        <a href="https://x.com/ibuprod" target="_blank" rel="noopener noreferrer" class="founder-link">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                            @ibuprod
+                        </a>
+                        <a href="https://x.com/consort_tech" target="_blank" rel="noopener noreferrer" class="founder-link">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                            @consort_tech
+                        </a>
+                        <a href="https://www.linkedin.com/in/ibukarel/" target="_blank" rel="noopener noreferrer" class="founder-link">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                            LinkedIn
+                        </a>
+                    </div>
+                    <a href="https://calendar.app.google/bQrjGEKYjcyQGbhcA" target="_blank" rel="noopener noreferrer" class="founder-book-call">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                        Book a Call
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== SECTION 8: THE RAISE ===== -->
+    <section id="raise" class="section">
+        <div class="section-inner">
+            <span class="section-label">The Raise</span>
+            <div class="raise-terms">
+                <div class="raise-term">
+                    <span class="raise-term-num" data-count-to="3" data-prefix="$" data-suffix="M">0</span>
+                    <span class="raise-term-label">raise amount</span>
+                </div>
+                <div class="raise-term">
+                    <span class="raise-term-num" data-count-to="15" data-prefix="$" data-suffix="M">0</span>
+                    <span class="raise-term-label">valuation</span>
+                </div>
+                <div class="raise-term">
+                    <span class="raise-term-num" data-count-to="24" data-suffix=" months">0</span>
+                    <span class="raise-term-label">runway</span>
+                </div>
+            </div>
+
+            <div class="funds-section">
+                <div class="funds-heading">Use of Funds</div>
+                <div class="funds-bar">
+                    <div class="funds-segment" style="width:50%">50%</div>
+                    <div class="funds-segment" style="width:25%">25%</div>
+                    <div class="funds-segment" style="width:15%">15%</div>
+                    <div class="funds-segment" style="width:10%"></div>
+                </div>
+                <div class="funds-legend">
+                    <span class="funds-legend-item"><span class="funds-legend-dot" style="background:#0066FF"></span>Team 50%</span>
+                    <span class="funds-legend-item"><span class="funds-legend-dot" style="background:#0052cc"></span>Marketing &amp; Distribution 25%</span>
+                    <span class="funds-legend-item"><span class="funds-legend-dot" style="background:#003d99"></span>R&amp;D 15%</span>
+                    <span class="funds-legend-item"><span class="funds-legend-dot" style="background:#002966"></span>Operations 10%</span>
+                </div>
+            </div>
+
+            <div class="cta-section">
+                <h2 class="cta-headline">Let's Talk</h2>
+                <div class="cta-buttons">
+                    <a href="https://calendar.app.google/bQrjGEKYjcyQGbhcA" target="_blank" rel="noopener noreferrer" class="cta-btn primary">&#x1F4C5; Book a Call</a>
+                    <a href="mailto:ibukarel@gmail.com" class="cta-btn secondary">&#x2709;&#xFE0F; Email</a>
+                    <a href="https://t.me/ibukarel" target="_blank" rel="noopener noreferrer" class="cta-btn secondary">&#x1F4AC; Telegram</a>
+                </div>
+                <p class="cta-footer">consorttechnologies@gmail.com</p>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        (function () {
+            const sections = Array.from(document.querySelectorAll('.section'));
+            const totalSections = sections.length;
+            const progressBar = document.getElementById('progress-bar');
+            const counter = document.getElementById('section-counter');
+            const dots = Array.from(document.querySelectorAll('.dot'));
+            const animated = new Set();
+            let currentIndex = 0;
+
+            /* === Update UI for current section === */
+            function updateUI(index) {
+                currentIndex = index;
+                // Progress bar
+                const pct = totalSections > 1 ? (index / (totalSections - 1)) * 100 : 0;
+                progressBar.style.width = pct + '%';
+                // Counter
+                counter.textContent = (index + 1) + ' / ' + totalSections;
+                // Dots
+                dots.forEach(function (d, i) {
+                    d.classList.toggle('active', i === index);
+                });
+            }
+
+            /* === Count-up animation === */
+            function countUp(el) {
+                var target = parseFloat(el.dataset.countTo);
+                var prefix = el.dataset.prefix || '';
+                var suffix = el.dataset.suffix || '';
+                var decimals = parseInt(el.dataset.decimals) || 0;
+                var duration = 1500;
+                var start = null;
+
+                function step(ts) {
+                    if (!start) start = ts;
+                    var progress = Math.min((ts - start) / duration, 1);
+                    var eased = 1 - Math.pow(1 - progress, 3);
+                    var value = target * eased;
+                    el.textContent = prefix + value.toFixed(decimals) + suffix;
+                    if (progress < 1) requestAnimationFrame(step);
+                }
+                requestAnimationFrame(step);
+            }
+
+            /* === IntersectionObserver: visibility + animations === */
+            var visObserver = new IntersectionObserver(function (entries) {
+                entries.forEach(function (entry) {
+                    if (entry.isIntersecting) {
+                        var section = entry.target;
+                        section.classList.add('visible');
+
+                        var idx = sections.indexOf(section);
+                        if (idx !== -1) updateUI(idx);
+
+                        // Trigger count-up once per section
+                        if (!animated.has(section.id)) {
+                            animated.add(section.id);
+                            section.querySelectorAll('[data-count-to]').forEach(countUp);
+                        }
+                    }
+                });
+            }, { threshold: 0.4 });
+
+            sections.forEach(function (s) { visObserver.observe(s); });
+
+            /* === Dot navigation click === */
+            dots.forEach(function (dot) {
+                dot.addEventListener('click', function () {
+                    var idx = parseInt(dot.dataset.index);
+                    sections[idx].scrollIntoView({ behavior: 'smooth' });
+                });
+            });
+
+            /* === Keyboard navigation === */
+            document.addEventListener('keydown', function (e) {
+                if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
+                    e.preventDefault();
+                    var next = Math.min(currentIndex + 1, totalSections - 1);
+                    sections[next].scrollIntoView({ behavior: 'smooth' });
+                } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+                    e.preventDefault();
+                    var prev = Math.max(currentIndex - 1, 0);
+                    sections[prev].scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        })();
+    </script>
+</body>
+</html>
