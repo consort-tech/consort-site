@@ -80,8 +80,8 @@
             transform: translateY(0);
         }
 
-        /* Hero is visible immediately */
-        #hero .section-inner {
+        /* First section is visible immediately */
+        #opportunity .section-inner {
             opacity: 1;
             transform: translateY(0);
         }
@@ -154,64 +154,7 @@
             border-color: var(--accent);
         }
 
-        /* ===== SECTION 1: HERO ===== */
-        #hero {
-            text-align: center;
-        }
-
-        #hero .section-inner {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .hero-logo {
-            max-width: 480px;
-            width: 80vw;
-            height: auto;
-            margin-bottom: 32px;
-        }
-
-        .hero-tagline {
-            font-family: var(--font-body);
-            font-size: 22px;
-            font-weight: 400;
-            color: var(--text-secondary);
-            letter-spacing: 0.02em;
-        }
-
-        .scroll-indicator {
-            position: absolute;
-            bottom: 48px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 12px;
-            color: var(--text-tertiary);
-            font-size: 13px;
-            font-weight: 500;
-            letter-spacing: 0.1em;
-            animation: fadeIn 1s ease-out 0.5s both;
-        }
-
-        .scroll-indicator svg {
-            animation: bounce 2s ease-in-out infinite;
-        }
-
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(6px); }
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        /* ===== SECTION 2: THE OPPORTUNITY ===== */
+        /* ===== SECTION 1: THE OPPORTUNITY ===== */
         #opportunity .section-inner {
             text-align: center;
         }
@@ -897,11 +840,6 @@
                 font-size: 12px;
             }
 
-            /* Hero */
-            .hero-logo { max-width: 300px; }
-            .hero-tagline { font-size: 18px; }
-            .scroll-indicator { bottom: 32px; font-size: 11px; }
-
             /* Opportunity */
             .stat-number { font-size: 64px; }
             .stat-row { gap: 40px; }
@@ -994,7 +932,7 @@
     <div id="progress-bar"></div>
 
     <!-- Section Counter -->
-    <div id="section-counter">1 / 8</div>
+    <div id="section-counter">1 / 7</div>
 
     <!-- Dot Navigation -->
     <nav id="dot-nav">
@@ -1005,25 +943,10 @@
         <button class="dot" data-index="4" aria-label="Section 5"></button>
         <button class="dot" data-index="5" aria-label="Section 6"></button>
         <button class="dot" data-index="6" aria-label="Section 7"></button>
-        <button class="dot" data-index="7" aria-label="Section 8"></button>
     </nav>
 
-    <!-- ===== SECTION 1: HERO ===== -->
-    <section id="hero" class="section visible">
-        <div class="section-inner">
-            <img src="../assets/logo-full.png" alt="Consort Technologies" class="hero-logo">
-            <p class="hero-tagline">Edge for the bleeding edge.</p>
-        </div>
-        <div class="scroll-indicator">
-            <span>Scroll to explore</span>
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                <path d="M4 7l6 6 6-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-        </div>
-    </section>
-
-    <!-- ===== SECTION 2: THE OPPORTUNITY ===== -->
-    <section id="opportunity" class="section">
+    <!-- ===== SECTION 1: THE OPPORTUNITY ===== -->
+    <section id="opportunity" class="section visible">
         <div class="section-inner">
             <span class="section-label">The Opportunity</span>
             <div class="hero-stat">
