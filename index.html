@@ -59,6 +59,33 @@
             color: #000000;
         }
 
+        .button-group {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .invest-btn {
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            padding: 0.8rem 2.5rem;
+            background: transparent;
+            border: 1px solid #ffffff;
+            color: #ffffff;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-radius: 4px;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .invest-btn:hover {
+            background: #ffffff;
+            color: #000000;
+        }
+
         .overlay {
             position: fixed;
             top: 0;
@@ -200,7 +227,8 @@
                 max-width: 440px;
             }
 
-            .products-btn {
+            .products-btn,
+            .invest-btn {
                 font-size: 1rem;
                 padding: 0.7rem 2rem;
             }
@@ -225,7 +253,10 @@
 <body>
     <div class="main-content">
         <img src="assets/logo-full.png" alt="Consort Technologies" class="logo">
-        <button class="products-btn" onclick="openOverlay()">Products</button>
+        <div class="button-group">
+            <button class="products-btn" onclick="openOverlay()">Products</button>
+            <a href="/invest/" class="invest-btn">Invest</a>
+        </div>
     </div>
 
     <div class="overlay" id="overlay">
