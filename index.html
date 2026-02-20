@@ -133,11 +133,11 @@
         }
 
         .products-grid {
-            display: flex;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
             gap: 2rem;
-            flex-wrap: wrap;
-            justify-content: center;
-            max-width: 900px;
+            max-width: 700px;
+            width: 100%;
         }
 
         .product-card {
@@ -145,12 +145,15 @@
             border-radius: 16px;
             background: transparent;
             padding: 2rem;
-            width: 320px;
+            aspect-ratio: 1 / 1;
             text-align: center;
             transition: all 0.3s ease;
             text-decoration: none;
             color: #ffffff;
-            display: block;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
         }
 
         .product-card:hover {
@@ -192,6 +195,11 @@
 
         .product-card-container {
             position: relative;
+            aspect-ratio: 1 / 1;
+        }
+
+        .product-card-container .product-card {
+            height: 100%;
         }
 
         .product-card-links {
@@ -233,8 +241,8 @@
                 padding: 0.7rem 2rem;
             }
 
-            .product-card {
-                width: 100%;
+            .products-grid {
+                grid-template-columns: 1fr;
                 max-width: 320px;
             }
 
@@ -262,9 +270,9 @@
     <div class="overlay" id="overlay">
         <button class="close-btn" onclick="closeOverlay()">&times;</button>
         <div class="products-grid">
-            <a href="https://github.com/consort-tech/organize-tg" target="_blank" rel="noopener noreferrer" class="product-card">
-                <h3>Organize TG</h3>
-                <p>Sorting and automation of your Telegram contacts. Great for founders and other busy people.</p>
+            <a href="https://lolo.consort.tech" target="_blank" rel="noopener noreferrer" class="product-card">
+                <h3>Lolo</h3>
+                <p>Location-based meetup and event platform for crypto.</p>
             </a>
             <div class="product-card-container">
                 <div class="product-card">
@@ -276,9 +284,9 @@
                     </div>
                 </div>
             </div>
-            <a href="https://lolo.consort.tech" target="_blank" rel="noopener noreferrer" class="product-card">
-                <h3>Lolo</h3>
-                <p>Location-based meetup and event platform for crypto.</p>
+            <a href="https://github.com/consort-tech/organize-tg" target="_blank" rel="noopener noreferrer" class="product-card">
+                <h3>Organize TG</h3>
+                <p>Sorting and automation of your Telegram contacts. Great for founders and other busy people.</p>
             </a>
             <div class="product-card disabled">
                 <h3>More Soon</h3>
